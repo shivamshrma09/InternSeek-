@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minimalist Resume Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+      color: #333;
+    }
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 35px 30px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .form-section {
+      flex: 1;
+      min-width: 300px;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+      color: #34495e;
+      font-size: 0.95em;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px 15px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #dcdfe6;
+      border-radius: 8px;
+      font-size: 1em;
+      background: #ffffff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    button[type="button"] {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    }
+    button[type="button"]:hover {
+      background: #0056b3;
+      transform: translateY(-1px);
+    }
+    button[type="button"]:active {
+      background: #004494;
+      transform: translateY(0);
+    }
+    .resume-preview {
+      background: #ffffff;
+      padding: 40px 35px;
+      flex: 2;
+      min-width: 400px;
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1.05em;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      min-height: 700px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .resume-header {
+      margin-bottom: 15px;
+      text-align: center;
+      position: relative;
+    }
+    .resume-header h1 {
+      color: #007bff;
+      font-size: 2.2em;
+      font-weight: 700;
+      margin: 10px 0 0 0;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .contact-email-phone {
+      font-size: 1.08em;
+      color: #34495e;
+      margin-bottom: 7px;
+      margin-top: 7px;
+      letter-spacing: 0.2px;
+      font-weight: 500;
+    }
+    .contact-social-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      margin-top: 2px;
+      gap: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      color: #222;
+      font-weight: 500;
+      gap: 6px;
+      text-decoration: none;
+      transition: color 0.2s;
+      min-width: 0;
+    }
+    .contact-link .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+    .contact-link .linkedin-text {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .contact-link:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+    .contact-link.left-link {
+      justify-content: flex-start;
+      flex: 1;
+      text-align: left;
+    }
+    .contact-link.right-link {
+      justify-content: flex-end;
+      flex: 1;
+      text-align: right;
+    }
+    .contact-social-row > span {
+      flex: 1;
+    }
+    @media (max-width: 600px) {
+      .contact-social-row {
+        flex-direction: column;
+        gap: 7px;
+        max-width: 100%;
+      }
+      .contact-link.left-link, .contact-link.right-link {
+        justify-content: flex-start;
+        width: 100%;
+        text-align: left;
+      }
+    }
+    .profile-pic-preview {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid #007bff;
+      margin: 0 auto 10px auto;
+      display: block;
+      background: #e3eafc;
+    }
+    .section-title {
+      color: #007bff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.15em;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #e3eafc;
+      padding-bottom: 5px;
+    }
+    ul {
+      padding-left: 25px;
+      margin: 0 0 15px 0;
+      word-break: break-word;
+    }
+    ul li {
+      margin-bottom: 6px;
+      list-style: none;
+      position: relative;
+      padding-left: 20px;
+      font-size: 1em;
+      word-break: break-word;
+    }
+    ul.bullet-dot li:before {
+      content: "•";
+      color: #007bff;
+      font-size: 1.2em;
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 1.5;
+    }
+    .bold {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .underline {
+      text-decoration: underline;
+    }
+    @media (max-width: 850px) {
+      .container {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .form-section, .resume-preview {
+        min-width: unset;
+        width: 100%;
+      }
+      .resume-preview {
+        padding: 25px 20px;
+        font-size: 1em;
+      }
+      .resume-header h1 {
+        font-size: 1.8em;
+      }
+      .section-title {
+        font-size: 1.05em;
+      }
+    }
+    @media (max-width: 500px) {
+      .container {
+        margin: 15px auto;
+        padding: 15px;
+      }
+      input, textarea {
+        padding: 8px 12px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+      }
+      .resume-header h1 {
+        font-size: 1.6em;
+      }
+      .section-title {
+        font-size: 1em;
+      }
+      ul li {
+        font-size: 0.95em;
+      }
+      .profile-pic-preview {
+        width: 80px;
+        height: 80px;
+      }
+      .contact-email-phone {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <form id="resumeForm" autocomplete="off">
+        <label for="profilePic">Profile Image (square recommended)</label>
+        <input type="file" id="profilePic" accept="image/*">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="YOUR NAME" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="YOUR_NAME@gmail.com">
+
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" placeholder="(+91) 0000000000">
+
+        <label for="linkedin">LinkedIn Profile URL</label>
+        <input type="text" id="linkedin" placeholder="linkedin.com/in/yourname">
+
+        <label for="github">GitHub Profile URL</label>
+        <input type="text" id="github" placeholder="github.com/yourname">
+
+        <label for="skills">Skills (One per line, use &lt;b&gt;bold&lt;/b&gt; for emphasis: &lt;b&gt;HTML&lt;/b&gt;, CSS, JS)</label>
+        <textarea id="skills" placeholder="Java&#10;HTML, CSS, JavaScript&#10;Python"></textarea>
+
+        <label for="education">Education (Format: Degree | University, Location | Year)</label>
+        <textarea id="education" placeholder="College Board | College&#10;CGPA: X.X/X&#10;Year"></textarea>
+
+        <label for="experience">Experience (Format: Position | Company | Year&#10;Description with &lt;b&gt;bold&lt;/b&gt; words)</label>
+        <textarea id="experience" placeholder="Your Position | Company&#10;Year&#10;Work that you did"></textarea>
+
+        <label for="projects">Academic Projects (Format: Project Title | Technologies Used&#10;Key contributions or features. Paste GitHub link to auto-link)</label>
+        <textarea id="projects" placeholder="Project Title&#10;Project details&#10;https://github.com/your/project"></textarea>
+
+        <label for="por">Position of Responsibility (Format: Role | Organization, College (Dates)&#10;Key responsibilities or achievements with &lt;b&gt;bold&lt;/b&gt; words)</label>
+        <textarea id="por" placeholder="Society Title | Society, College (Date-Present)&#10;Details"></textarea>
+
+        <label for="achievements">Achievements (One per line, use &lt;b&gt;bold&lt;/b&gt; for emphasis)</label>
+        <textarea id="achievements" placeholder="Mention your achievements"></textarea>
+
+        <button type="button" onclick="downloadPDF()">Download PDF</button>
+      </form>
+    </div>
+    <div class="resume-preview" id="resumePreview"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    let profilePicData = '';
+
+    document.getElementById('profilePic').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          profilePicData = evt.target.result;
+          updatePreview();
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+. h
+    function icon(name) {
+      if (name === "github") {
+        return `<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.6 0-12 5.4-12 12 0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 1.8 1.7 2.2.1-.7.4-1.2.7-1.5-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2c-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.2 11.2 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3a4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.3.8 1 .8 2v3c0 .3.2.7.8.6C20.6 22.1 24 17.6 24 12.3c0-6.6-5.4-12-12-12"/></svg>`;
+      }
+      if (name === "linkedin") {
+        return `<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.024-3.037-1.849-3.037-1.851 0-2.132 1.445-2.132 2.94v5.666h-3.554V9h3.414v1.561h.049c.476-.9 1.637-1.849 3.372-1.849 3.602 0 4.267 2.369 4.267 5.455v6.285zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.554V9h3.565v11.452z"/></svg>`;
+      }
+      return "";
+    }
+
+    function applyFormatting(text) {
+      return text
+        .replace(/<b>(.*?)<\/b>/g, '<span class="bold">$1</span>')
+        .replace(/<u>(.*?)<\/u>/g, '<span class="underline">$1</span>');
+    }
+
+    function getListHTML(text) {
+      if (!text.trim()) return '';
+      const lines = text.split('\n').filter(Boolean);
+      return `<ul class="bullet-dot">` +
+        lines.map(line => {
+          // For projects: If line contains a GitHub link, show "GitHub Project" clickable
+          if (window._currentSection === 'projects') {
+            const githubRegex = /(https?:\/\/)?(www\.)?github\.com\/[^\s)]+/gi;
+            let githubLinks = line.match(githubRegex);
+            let html = applyFormatting(line.replace(githubRegex, '').trim());
+            if (githubLinks) {
+              githubLinks = Array.from(new Set(githubLinks));
+              html += ' ';
+              html += githubLinks.map(link =>
+                `<a href="${link.startsWith('http') ? link : 'https://' + link}" class="contact-link" target="_blank">${icon('github')}GitHub Project</a>`
+              ).join(' ');
+            }
+            return `<li>${html}</li>`;
+          }
+          const parts = line.split('|');
+          if (parts.length > 1) {
+            const title = applyFormatting(parts[0].trim());
+            const description = applyFormatting(parts.slice(1).join('|').trim());
+            return `<li><span class="bold">${title}</span> | ${description}</li>`;
+          }
+          return `<li>${applyFormatting(line)}</li>`;
+        }).join('') +
+        '</ul>';
+    }
+    
+    
+    // Part of the <script> block in the HTML above
+
+const sections = ['heroSection', 'templateSelectSection', 'resumeBuilderSection'];
+let currentTemplate = ''; // Stores the ID of the selected template
+
+function showSection(sectionId) {
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.classList.remove('active');
+    }
+  });
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.classList.add('active');
+    window.scrollTo(0, 0); // Scroll to top when changing sections
+  }
+}
+
+// Initial call to show the hero section on load
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('heroSection');
+    renderTemplates(); // Render templates once the DOM is ready
+    // Initial preview update when form loads
+    document.getElementById('resumeForm').addEventListener('input', updateResumePreview);
+    updateResumePreview();
+});
+
+
+
+// Part of the <script> block in the HTML above
+
+const templates = [
+  { id: 'modern', label: 'Modern Clean', desc: 'A sleek and professional design.', img: 'https://cdn.pixabay.com/photo/2016/11/29/05/45/person-1867451_1280.jpg' },
+  { id: 'classic', label: 'Classic Professional', desc: 'Timeless and widely accepted.', img: 'https://via.placeholder.com/260x340/e0f2fe/007bff?text=Classic+Template' },
+  { id: 'creative', label: 'Creative Edge', desc: 'For those who want to stand out.', img: 'https://via.placeholder.com/260x340/ffe0e0/ff0000?text=Creative+Template' },
+  { id: 'minimalist', label: 'Minimalist Focus', desc: 'Simple, clear, and to the point.', img: 'https://via.placeholder.com/260x340/f0f0f0/333333?text=Minimalist+Template' }
+];
+let currentTemplateIndex = 0;
+
+function renderTemplates() {
+  const templateCarousel = document.getElementById('templateCarousel');
+  templateCarousel.innerHTML = '';
+  templates.forEach((template, index) => {
+    const item = document.createElement('div');
+    item.className = 'template-carousel-item'; // This item takes 100vw width
+
+    const card = document.createElement('div');
+    card.className = 'template-card w-72 h-auto flex flex-col items-center cursor-pointer p-4'; // Actual card style
+    card.setAttribute('data-template-id', template.id);
+    card.onclick = () => selectTemplate(template.id);
+
+    card.innerHTML = `
+      <img src="${template.img}" alt="${template.label} Preview" class="template-preview-img mb-3 rounded-lg">
+      <div class="template-label text-xl font-bold text-blue-600 mb-1">${template.label}</div>
+      <div class="template-desc text-sm text-gray-600 text-center">${template.desc}</div>
+    `;
+    item.appendChild(card);
+    templateCarousel.appendChild(item);
+  });
+  updateTemplateCarouselPosition(); // Set initial position and selection
+}
+
+function updateTemplateCarouselPosition() {
+  const templateCarousel = document.getElementById('templateCarousel');
+  // Get the width of one carousel item. This needs to be consistent.
+  // Using document.querySelector('.template-carousel-item').offsetWidth; might not work if it's display:none
+  // Better to use window.innerWidth or a fixed width. For simplicity, assume 100vw.
+  const itemWidth = window.innerWidth;
+  templateCarousel.style.transform = `translateX(-${currentTemplateIndex * itemWidth}px)`;
+
+  // Update selected state visually
+  document.querySelectorAll('.template-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  if (templates[currentTemplateIndex]) {
+    document.querySelector(`.template-card[data-template-id="${templates[currentTemplateIndex].id}"]`).classList.add('selected');
+    currentTemplate = templates[currentTemplateIndex].id; // Set the selected template ID
+  }
+}
+
+function scrollTemplates(direction) {
+  currentTemplateIndex += direction;
+  if (currentTemplateIndex < 0) {
+    currentTemplateIndex = templates.length - 1; // Loop to end
+  } else if (currentTemplateIndex >= templates.length) {
+    currentTemplateIndex = 0; // Loop to beginning
+  }
+  updateTemplateCarouselPosition();
+}
+
+function selectTemplate(templateId) {
+    currentTemplate = templateId;
+    document.querySelectorAll('.template-card').forEach(card => {
+        card.classList.remove('selected');
+        if (card.getAttribute('data-template-id') === templateId) {
+            card.classList.add('selected');
+        }
+    });
+    // If you click a card, the carousel should move to it
+    const index = templates.findIndex(t => t.id === templateId);
+    if (index !== -1) {
+        currentTemplateIndex = index;
+        updateTemplateCarouselPosition();
+    }
+}
+
+
+// Part of the <script> block in the HTML above
+
+function updateResumePreview() {
+    const preview = document.getElementById('resumePreview');
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const linkedin = document.getElementById('linkedin').value;
+    const github = document.getElementById('github').value;
+    const skills = document.getElementById('skills').value.split('\n').filter(s => s.trim() !== '');
+    const education = document.getElementById('education').value.split('\n').filter(s => s.trim() !== '');
+    const experience = document.getElementById('experience').value.split('\n').filter(s => s.trim() !== '');
+    const projects = document.getElementById('projects').value.split('\n').filter(s => s.trim() !== '');
+    const por = document.getElementById('por').value.split('\n').filter(s => s.trim() !== '');
+    const achievements = document.getElementById('achievements').value.split('\n').filter(s => s.trim() !== '');
+
+    let profilePicSrc = '';
+    const profilePicInput = document.getElementById('profilePic');
+    if (profilePicInput.files && profilePicInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profilePicSrc = e.target.result;
+            renderResumeHTML(profilePicSrc, name, email, phone, linkedin, github, skills, education, experience, projects, por, achievements, preview);
+        };
+        reader.readAsDataURL(profilePicInput.files[0]);
+    } else {
+        renderResumeHTML(profilePicSrc, name, email, phone, linkedin, github, skills, education, experience, projects, por, achievements, preview);
+    }
+}
+
+// The renderResumeHTML function would dynamically generate the HTML
+// for the resume based on the selected `currentTemplate` and input data.
+// For a truly "premium" and distinct template, you'd have a `switch` statement
+// or mapping here that renders different HTML structures based on `currentTemplate`.
+// The example below is a generic, improved one.
+
+function renderResumeHTML(profilePicSrc, name, email, phone, linkedin, github, skills, education, experience, projects, por, achievements, previewElement) {
+    let resumeHTML = `<div class="resume-container p-6 bg-white shadow-lg rounded-lg">`;
+
+                            // Header Section (Example with Tailwind for premium look)
+    resumeHTML += `
+        <div class="flex items-center mb-6 border-b pb-4">
+            ${profilePicSrc ? `<img src="${profilePicSrc}" class="w-24 h-24 rounded-full mr-6 border-4 border-blue-100 object-cover" alt="Profile Picture">` : ''}
+            <div>
+                <h1 class="text-4xl font-extrabold text-gray-800">${name || 'YOUR NAME'}</h1>
+                <div class="text-lg text-gray-600 mt-2">
+                    ${email ? `<span class="mr-4"><i class="fas fa-envelope mr-1"></i> ${email}</span>` : ''}
+                    ${phone ? `<span class="mr-4"><i class="fas fa-phone mr-1"></i> ${phone}</span>` : ''}
+                    ${linkedin ? `<a href="https://${linkedin}" target="_blank" class="text-blue-600 hover:underline mr-4"><i class="fab fa-linkedin mr-1"></i> LinkedIn</a>` : ''}
+                    ${github ? `<a href="https://${github}" target="_blank" class="text-blue-600 hover:underline"><i class="fab fa-github mr-1"></i> GitHub</a>` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add Font Awesome for icons (optional, but enhances "premium" feel)
+    // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    // (Add this to your <head>)
+
+    // Skills Section
+    if (skills.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Skills</h2><ul class="list-disc list-inside text-gray-700 mb-4">`;
+        skills.forEach(skill => {
+            // Replace HTML entities for bold tags
+            resumeHTML += `<li>${skill.replace(/&lt;b&gt;/g, '<b>').replace(/&lt;\/b&gt;/g, '</b>')}</li>`;
+        });
+        resumeHTML += `</ul>`;
+    }
+
+    // Education Section
+    if (education.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Education</h2>`;
+        education.forEach(edu => {
+            const parts = edu.split('|').map(p => p.trim());
+            resumeHTML += `<div class="mb-2"><p class="font-semibold text-lg text-gray-800">${parts[0]}</p>`;
+            if (parts[1]) resumeHTML += `<p class="text-gray-700">${parts[1]}</p>`;
+            if (parts[2]) resumeHTML += `<p class="text-gray-600 text-sm">${parts[2]}</p>`;
+            resumeHTML += `</div>`;
+        });
+    }
+
+    // Experience Section
+    if (experience.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Experience</h2>`;
+        experience.forEach(exp => {
+            const lines = exp.split('\n').filter(line => line.trim() !== '');
+            if (lines.length > 0) {
+                const header = lines[0].split('|').map(p => p.trim());
+                resumeHTML += `<div class="mb-4">`;
+                resumeHTML += `<p class="font-semibold text-lg text-gray-800">${header[0]}${header[1] ? ` | ${header[1]}` : ''}${header[2] ? ` | <span class="font-normal text-gray-600 text-base">${header[2]}</span>` : ''}</p>`;
+                resumeHTML += `<ul class="list-disc ml-5 text-gray-700 mt-1">`;
+                for (let i = 1; i < lines.length; i++) {
+                    resumeHTML += `<li>${lines[i].replace(/&lt;b&gt;/g, '<b>').replace(/&lt;\/b&gt;/g, '</b>')}</li>`;
+                }
+                resumeHTML += `</ul></div>`;
+            }
+        });
+    }
+
+    // Projects Section
+    if (projects.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Academic Projects</h2>`;
+        projects.forEach(proj => {
+            const lines = proj.split('\n').filter(line => line.trim() !== '');
+            if (lines.length > 0) {
+                const header = lines[0].split('|').map(p => p.trim());
+                const githubLink = lines.find(line => line.includes('github.com/'));
+                resumeHTML += `<div class="mb-4">`;
+                resumeHTML += `<p class="font-semibold text-lg text-gray-800">${header[0]}${header[1] ? ` | <span class="font-normal text-gray-600 text-base">${header[1]}</span>` : ''}</p>`;
+                if (githubLink) {
+                    resumeHTML += `<a href="${githubLink}" target="_blank" class="text-blue-600 hover:underline text-sm mb-1 block">GitHub Repository</a>`;
+                }
+                resumeHTML += `<ul class="list-disc ml-5 text-gray-700 mt-1">`;
+                for (let i = 1; i < lines.length; i++) {
+                    if (!lines[i].includes('github.com/')) { // Don't re-list the github link
+                        resumeHTML += `<li>${lines[i].replace(/&lt;b&gt;/g, '<b>').replace(/&lt;\/b&gt;/g, '</b>')}</li>`;
+                    }
+                }
+                resumeHTML += `</ul></div>`;
+            }
+        });
+    }
+
+    // Positions of Responsibility Section
+    if (por.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Positions of Responsibility</h2>`;
+        por.forEach(p => {
+            const lines = p.split('\n').filter(line => line.trim() !== '');
+            if (lines.length > 0) {
+                const header = lines[0].split('|').map(p => p.trim());
+                resumeHTML += `<div class="mb-4">`;
+                resumeHTML += `<p class="font-semibold text-lg text-gray-800">${header[0]}${header[1] ? ` | <span class="font-normal text-gray-600 text-base">${header[1]}</span>` : ''}</p>`;
+                resumeHTML += `<ul class="list-disc ml-5 text-gray-700 mt-1">`;
+                for (let i = 1; i < lines.length; i++) {
+                    resumeHTML += `<li>${lines[i].replace(/&lt;b&gt;/g, '<b>').replace(/&lt;\/b&gt;/g, '</b>')}</li>`;
+                }
+                resumeHTML += `</ul></div>`;
+            }
+        });
+    }
+
+    // Achievements Section
+    if (achievements.length > 0) {
+        resumeHTML += `<h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4 mt-6">Achievements</h2><ul class="list-disc list-inside text-gray-700 mb-4">`;
+        achievements.forEach(achieve => {
+            resumeHTML += `<li>${achieve.replace(/&lt;b&gt;/g, '<b>').replace(/&lt;\/b&gt;/g, '</b>')}</li>`;
+        });
+        resumeHTML += `</ul>`;
+    }
+
+    resumeHTML += `</div>`;
+    previewElement.innerHTML = resumeHTML;
+}
+
+
+// Part of the <script> block in the HTML above
+
+async function downloadPDF() {
+    const element = document.getElementById('resumePreview');
+    const { jsPDF } = window.jspdf;
+
+    // Create a temporary div to render the content with a fixed width for PDF generation
+    // This helps maintain layout consistency during PDF creation
+    const tempDiv = document.createElement('div');
+    tempDiv.style.width = '794px'; // A4 width at 96dpi (approx 210mm * 3.779528)
+    tempDiv.style.padding = '30px'; // Match the padding of the original preview
+    tempDiv.style.backgroundColor = '#fff';
+    tempDiv.innerHTML = element.innerHTML;
+    document.body.appendChild(tempDiv); // Append to body to render off-screen
+
+    try {
+        const canvas = await html2canvas(tempDiv, {
+            scale: 2, // Increase scale for better resolution
+            useCORS: true // Essential if you have images from external sources
+        });
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+            orientation: 'portrait',
+            unit: 'px',
+            format: 'a4'
+        });
+
+        const imgWidth = 595; // A4 width in px at 72dpi
+        const pageHeight = 842; // A4 height in px at 72dpi
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+
+        pdf.save('internseek_resume.pdf');
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Failed to generate PDF. Please try again.');
+    } finally {
+        document.body.removeChild(tempDiv); // Clean up the temporary div
+    }
+}
+
+    
+    
+    
+    
+
+    function extractGithubUsername(url) {
+      url = url.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
+      let match = url.match(/github\.com\/([A-Za-z0-9-_.]+)/);
+      return match ? '@' + match[1] : url;
+    }
+    function extractLinkedinUsername(url) {
+      url = url.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
+      let match = url.match(/linkedin\.com\/in\/([A-Za-z0-9-_.]+)/);
+      return match ? '/'+match[1] : url;
+    }
+
+    function updatePreview() {
+      const name = document.getElementById('name').value || 'YOUR NAME';
+      const email = document.getElementById('email').value || 'YOUR_NAME@gmail.com';
+      const phone = document.getElementById('phone').value || '(+91) 0000000000';
+      const linkedin = document.getElementById('linkedin').value;
+      const github = document.getElementById('github').value;
+      const skills = getListHTML(document.getElementById('skills').value);
+      const education = getListHTML(document.getElementById('education').value);
+      const experience = getListHTML(document.getElementById('experience').value);
+
+      window._currentSection = 'projects';
+      const projects = getListHTML(document.getElementById('projects').value);
+      window._currentSection = '';
+
+      const por = getListHTML(document.getElementById('por').value);
+      const achievements = getListHTML(document.getElementById('achievements').value);
+
+      document.getElementById('resumePreview').innerHTML = `
+        <div class="resume-header">
+          <h1>${name}</h1>
+          <div class="contact-email-phone">
+            ${email}${(email && phone) ? ' | ' : ''}${phone}
+          </div>
+          <div class="contact-social-row">
+            ${github ? `<a class="contact-link left-link" href="https://${github}" target="_blank">${icon('github')}<span>${extractGithubUsername(github)}</span></a>` : '<span></span>'}
+            ${linkedin ? `<a class="contact-link right-link" href="https://${linkedin}" target="_blank"><span class="linkedin-text">${extractLinkedinUsername(linkedin).split('/')[1] ? '/' + extractLinkedinUsername(linkedin).split('/')[1].split('-')[0] : ''} ${icon('linkedin')} ${extractLinkedinUsername(linkedin).split('/')[1] ? extractLinkedinUsername(linkedin).split('/')[1].split('-').slice(1).join('-') : ''}</span></a>` : '<span></span>'}
+          </div>
+        </div>
+        <div>
+          ${skills ? `<div class="section-title">Skills</div>${skills}` : ''}
+          ${education ? `<div class="section-title">Education</div>${education}` : ''}
+          ${experience ? `<div class="section-title">Experience</div>${experience}` : ''}
+          ${projects ? `<div class="section-title">Academic Projects</div>${projects}` : ''}
+          ${por ? `<div class="section-title">Position of Responsibility</div>${por}` : ''}
+          ${achievements ? `<div class="section-title">Achievements</div>${achievements}` : ''}
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('blur', updatePreview);
+    });
+
+    window.onload = updatePreview;
+
+    function downloadPDF() {
+      const preview = document.getElementById('resumePreview');
+      const { jsPDF } = window.jspdf;
+
+      html2canvas(preview, {
+        scale: 3,
+        useCORS: true,
+        logging: true,
+        scrollY: -window.scrollY
+      }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'pt',
+          format: 'a4'
+        });
+
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pdfWidth - 60;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+
+        if (imgHeight > pdfHeight - 60) {
+          const numPages = Math.ceil(imgHeight / (pdfHeight - 60));
+          let currentCanvasY = 0;
+          for (let i = 0; i < numPages; i++) {
+            if (i > 0) pdf.addPage();
+            const pageCanvas = document.createElement('canvas');
+            const pageCtx = pageCanvas.getContext('2d');
+            pageCanvas.width = canvas.width;
+            pageCanvas.height = Math.min(canvas.height - currentCanvasY, pdfHeight * canvas.width / imgWidth);
+            pageCtx.drawImage(canvas, 0, currentCanvasY, pageCanvas.width, pageCanvas.height,
+                              0, 0, pageCanvas.width, pageCanvas.height);
+            const pageImgData = pageCanvas.toDataURL('image/png');
+            pdf.addImage(pageImgData, 'PNG', 30, 30, imgWidth, pageCanvas.height * imgWidth / pageCanvas.width, '', 'FAST');
+            currentCanvasY += pageCanvas.height;
+          }
+        } else {
+          pdf.addImage(imgData, 'PNG', 30, 30, imgWidth, imgHeight, '', 'FAST');
+        }
+
+        const name = document.getElementById('name').value;
+        pdf.save(`${name.replace(/\s+/g, '_')}_resume.pdf`);
+      });
+    }
+  </script>
+</body>
+</html>
