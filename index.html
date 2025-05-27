@@ -1,35 +1,37 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>InternSeek | Find Internships</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>InternSeek - Best Internship Opportunities in India</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
   
-  <meta name="description" content="Find the best internships in India at InternSeek. Apply easily for remote, summer, and in-office internships." />
-  <meta name="keywords" content="InternSeek, Internship India, Summer Internship, Remote Internship, Career, Internships 2025" />
+  
+  
+  <!-- SEO Meta Tags -->
+  <title>InternSeek - Best Internship Opportunities in India</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Find the best internships in India at InternSeek..." />
+  <meta name="keywords" content="InternSeek, Internship India, Summer Internship, Remote Internship" />
   <meta name="author" content="InternSeek Team" />
   <link rel="canonical" href="https://www.internseek.com/" />
 
-
+  <!-- Social Media Meta Tags -->
   <meta property="og:title" content="InternSeek - Best Internship Opportunities in India" />
-  <meta property="og:description" content="Discover and apply for the best internships in India with InternSeek. Your gateway to career growth." />
+  <meta property="og:description" content="Discover and apply for internships..." />
   <meta property="og:url" content="https://www.internseek.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.internseek.com/images/og-image.jpg" />
 
-  
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="InternSeek - Best Internship Opportunities in India" />
-  <meta name="twitter:description" content="Find and apply for top internships in India easily at InternSeek." />
+  <meta name="twitter:description" content="Find and apply for top internships in India..." />
   <meta name="twitter:image" content="https://www.internseek.com/images/twitter-image.jpg" />
 
-  
   <link rel="icon" href="/favicon.ico" />
 
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
-
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +45,7 @@
     }
   }
   </script>
-
+  
   <style>
     :root {
       --primary: #4f8cff;
@@ -58,6 +60,102 @@
       --badge-deadline: #ffebee;
       --badge-recommend: #e8f5e9;
     }
+    
+    
+    
+    #feedbackModalBg {
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  z-index: 99999;
+}
+#feedbackModal {
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 12px 48px #4f8cff33, 0 2px 8px #4f8cff11;
+  padding: 40px 34px 32px 34px;
+  min-width: 320px;
+  max-width: 96vw;
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.23s;
+  border: 2.5px solid #e3eafc;
+}
+#feedbackModalClose {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: #4f8cff;
+  cursor: pointer;
+  font-weight: 900;
+  transition: color 0.2s;
+}
+#feedbackModalClose:hover { color: #ff7675;}
+.modal-icon {
+  font-size: 3.3em;
+  color: #4f8cff;
+  margin-bottom: 10px;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px #4f8cff22);
+}
+#feedbackModal h2 {
+  margin-top: 0;
+  color: #3151a3;
+  font-size: 1.5em;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #4f8cff11;
+}
+#feedbackModal p {
+  color: #232b38;
+  font-size: 1.13em;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+#feedbackGoogleFormBtn {
+  background: #4f8cff;
+  color: #fff;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 22px;
+  font-weight: 700;
+  font-size: 1.09rem;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px #4f8cff22;
+  transition: background 0.18s, color 0.18s;
+  outline: none;
+}
+#feedbackGoogleFormBtn:hover {
+  background: #3151a3;
+  color: #fff;
+}
+@media (max-width: 500px) {
+  #feedbackModal {
+    padding: 18px 7px 18px 7px;
+    min-width: 0;
+  }
+  #feedbackModal h2 {
+    font-size: 1.1em;
+  }
+  #feedbackModal p {
+    font-size: 1em;
+  }
+  #feedbackGoogleFormBtn {
+    font-size: 1em;
+    padding: 10px 18px;
+  }
+}
+@keyframes modalIn {
+  from { transform: scale(0.95); opacity: 0;}
+  to { transform: scale(1); opacity: 1;}
+}
+    
+    
     body {
       font-family: 'Inter', Arial, sans-serif;
       background: var(--bg);
@@ -158,13 +256,18 @@
       height: 36px;
       cursor: pointer;
       margin-left: 16px;
-      z-index: 1001;
+      z-index: 0.4;
+      background-color:#315173;
+  
+}
+
     }
     .hamburger span {
       height: 4px;
       width: 28px;
-      background: #3151a3;
+      background: #315173;
       margin: 4px 0;
+      
       border-radius: 2px;
       transition: 0.3s;
       display: block;
@@ -173,7 +276,7 @@
       display: flex;
       align-items: center;
       gap: 0;
-      transition: max-height 0.3s;
+      transition: max-height 0.4s;
     }
     .nav-links a {
       text-decoration: none;
@@ -542,7 +645,9 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 8px #4f8cff1a;
     }
-    .profile-modal-info {
+    
+    
+  .profile-modal-info {
       color: #232b38;
       font-size: 1.13em;
       margin-bottom: 7px;
@@ -605,7 +710,12 @@
       .edit-modal { padding: 10px 2px;}
     }
     
-        
+    
+    
+    
+
+    
+    
     jsjjekn
     
     .navbar {
@@ -659,7 +769,7 @@
     display: block;
     height: 3px;
     width: 100%;
-    background: #222;
+    
     border-radius: 2px;
   }
   .nav-links {
@@ -681,11 +791,10 @@
     color: #1ec7b6;
   }
     
-    .hamburger span {
-background: #222 !important;
-}
+  
 
-    
+
+
     
     
     
@@ -785,6 +894,21 @@ background: #222 !important;
       </form>
     </div>
   </div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <script>
     // Hamburger menu toggle
     const hamburgerBtn = document.getElementById("hamburgerBtn");
@@ -870,6 +994,9 @@ background: #222 !important;
       }
     };
     updateProfileNavbar();
+
+  
+    
 
   
     const internships = [
@@ -1050,8 +1177,7 @@ background: #222 !important;
         container.innerHTML = '<div style="padding:2em;text-align:center;color:#888;">No internships found.</div>';
         return;
       }
-      
-      
+    
       container.innerHTML = list.map(intern => `
         <div class="card">
           <div class="card-header">
@@ -1070,29 +1196,16 @@ background: #222 !important;
           <div class="actions">
             <button class="bookmark-btn ${bookmarks.includes(intern.id) ? 'bookmarked' : ''}" data-id="${intern.id}">
               ${bookmarks.includes(intern.id) ? 'Bookmarked' : 'Bookmark'}
-              
-
-              
-              
-              
-              
-              
-                        </button>
+          
+  
+            </button>
             <a href="${intern.applyLink}" target="_blank" class="btn">Apply</a>
             <a href="https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(intern.company)}" target="_blank" class="linkedin">LinkedIn</a>
           </div>
         </div>
       `).join('');
       
-      
-      
-      
-
-
-      
-      
-      
-      
+    
       // Add event listeners for bookmark buttons
       document.querySelectorAll('.bookmark-btn').forEach(btn => {
         btn.onclick = function() {
@@ -1107,6 +1220,14 @@ background: #222 !important;
         };
       });
     }
+    
+    
+
+
+    
+    
+    
+    
 
     function filterAndRender() {
       let list = internships.slice();
@@ -1197,8 +1318,51 @@ background: #222 !important;
        filterAndRender();
     });
      filterAndRender();
+  
      
   </script>
+  <!-- Google Form Feedback Modal -->
+<div id="feedbackModalBg">
+  <div id="feedbackModal">
+    <button id="feedbackModalClose" aria-label="Close">&times;</button>
+    <div class="modal-icon">📝</div>
+    <h2>participate in survey</h2>
+    <p>
+      Please help us improve by filling this quick Google Form.<br>
+      <span style="color:#3151a3;font-size:0.98em;">Your response is anonymous and takes less than a minute.</span>
+    </p>
+    <button id="feedbackGoogleFormBtn">Fill Google Form</button>
+  </div>
+</div>
+
+  
+  <script>
+  // Google Form Modal Logic
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfd.../viewform?usp=pp_url&entry.1234567890=InternSeek"; // <-- Apna Google Form link daalein
+
+  setTimeout(() => {
+    document.getElementById('feedbackModalBg').style.display = 'flex';
+  }, 10000);
+
+  document.getElementById('feedbackModalClose').onclick = function() {
+    document.getElementById('feedbackModalBg').style.display = 'none';
+  };
+
+  document.getElementById('feedbackGoogleFormBtn').onclick = function() {
+    window.open(GOOGLE_FORM_URL, '_blank');
+    document.getElementById('feedbackModalBg').style.display = 'none';
+  };
+</script>
+
+  
+  
+  
+  
+  
+  
+  
 </body>
 </html>
         
+
+    
