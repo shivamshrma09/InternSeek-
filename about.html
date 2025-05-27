@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About | InternSeek</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #e0eaff 0%, #f7faff 100%);
+      color: #1a2236;
+    }
+    .about-container {
+      max-width: 950px;
+      margin: 40px auto 32px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 32px;
+      box-shadow: 0 8px 40px #4f8cff22;
+      padding: 44px 40px 32px 40px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 1s cubic-bezier(.39,.575,.56,1) both;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .about-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .about-logo img {
+      height: 60px;
+      width: auto;
+      margin-bottom: 6px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 4px 16px;
+      box-shadow: 0 2px 18px #1ec7b644;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.5rem;
+      margin: 0 0 12px 0;
+      letter-spacing: 2px;
+      color: #1ec7b6;
+      text-align: center;
+    }
+    .about-premium {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .about-premium .star {
+      color: #facc15;
+      font-size: 1.4rem;
+      filter: drop-shadow(0 0 6px #facc1580);
+      animation: shine 2s infinite alternate;
+    }
+    @keyframes shine {
+      0% { filter: drop-shadow(0 0 2px #facc15);}
+      100% { filter: drop-shadow(0 0 12px #facc15);}
+    }
+    .about-premium span {
+      font-weight: 700;
+      color: #facc15;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+    .lead {
+      font-size: 1.13rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 32px auto;
+      color: #3151a3;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    /* Details Section */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin: 36px 0 30px 0;
+    }
+    .details-block {
+      background: linear-gradient(120deg, #e3eafc 70%, #f7faff 100%);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #4f8cff11;
+      padding: 24px 22px 18px 22px;
+      border-left: 6px solid #1ec7b6;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .details-block:hover {
+      box-shadow: 0 6px 24px #1ec7b622;
+      border-color: #4f8cff;
+    }
+    .details-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #3151a3;
+      margin-bottom: 8px;
+    }
+    .details-desc {
+      font-size: 0.97rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 18px 24px;
+      margin-bottom: 36px;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #1ec7b611;
+      padding: 18px 10px 13px 10px;
+      text-align: center;
+      border-top: 3px solid #1ec7b6;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 28px #1ec7b633;
+      border-color: #4f8cff;
+    }
+    .feature-icon {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+      color: #1ec7b6;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+      user-select: none;
+    }
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.01rem;
+      color: #3151a3;
+      margin-bottom: 5px;
+    }
+    .feature-desc {
+      font-size: 0.97rem;
+      color: #444;
+    }
+    /* How it works */
+    .how-works {
+      margin: 38px 0 32px 0;
+      background: rgba(255,255,255,0.7);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px #1ec7b611;
+      padding: 18px 20px;
+    }
+    .how-works-title {
+      font-weight: 700;
+      color: #1ec7b6;
+      font-size: 1.13rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .how-works-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .how-works-step {
+      background: #e3eafc;
+      border-radius: 12px;
+      padding: 12px 18px;
+      color: #3151a3;
+      font-size: 0.97rem;
+      min-width: 120px;
+      text-align: center;
+      box-shadow: 0 2px 8px #4f8cff11;
+      font-weight: 600;
+    }
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      background: #e3eafc;
+      color: #3151a3;
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: 0 4px 18px #4f8cff11;
+      text-align: center;
+      min-width: 90px;
+      user-select: none;
+      cursor: default;
+      border: 1.5px solid #d2e6f7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px #1ec7b622;
+      border-color: #1ec7b6;
+      background: #f7faff;
+    }
+    .stat-number {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+      color: #1ec7b6;
+    }
+    .stat-label {
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: #3151a3;
+    }
+    /* CTA */
+    .cta-btn {
+      display: block;
+      max-width: 220px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 1.01rem;
+      letter-spacing: 0.05em;
+      color: #fff;
+      background: linear-gradient(90deg, #1ec7b6 0%, #4f8cff 100%);
+      border: none;
+      border-radius: 40px;
+      box-shadow: 0 8px 30px #4f8cff22;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+      user-select: none;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #4f8cff 0%, #1ec7b6 100%);
+      box-shadow: 0 12px 40px #1ec7b644;
+      transform: scale(1.05);
+    }
+    /* Footer */
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.97rem;
+      color: #6c7a89;
+      user-select: none;
+    }
+    .footer a {
+      color: #1ec7b6;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .footer a:hover {
+      color: #4f8cff;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-container { padding: 12px 4vw 8px 4vw; }
+      .details-grid { grid-template-columns: 1fr; gap: 14px; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.2rem; }
+      .about-logo img { height: 32px; }
+      .about-container { padding: 8px 1vw 5px 1vw; }
+      .features { grid-template-columns: 1fr; gap: 8px; }
+      .stats { flex-direction: column; gap: 8px; }
+      .stat-card { padding: 10px 6px; }
+      .details-block { padding: 8px 5px 5px 5px; }
+      .how-works-list { flex-direction: column; gap: 8px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="about-container" role="main" aria-label="About InternSeek">
+    <div class="about-logo">
+      <img src="https://pplx-res.cloudinary.com/image/upload/v1748332814/user_uploads/54079383/106ea6a4-7cd6-4df4-b867-4a32b6d0ad67/1000087067.jpg" alt="InternSeek Logo" />
+    </div>
+    <div class="about-premium">
+      <span class="star">★</span>
+      <span>PREMIUM PLATFORM</span>
+      <span class="star">★</span>
+    </div>
+    <h1>About <span style="color:#232b38">InternSeek</span></h1>
+    <div class="lead">
+      InternSeek is your premium platform to discover top internships and build standout resumes. From Google to startups, we empower your career journey with the best opportunities, simple tools, and a supportive community.
+    </div>
+
+    <section class="details-grid">
+      <div class="details-block">
+        <div class="details-title">Our Mission</div>
+        <div class="details-desc">
+          To bridge the gap between talented students and the best companies by making internships accessible, transparent, and rewarding for everyone.
+        </div>
+      </div>
+      <div class="details-block">
+        <div class="details-title">Our Values</div>
+        <div class="details-desc">
+          <ul style="margin-left: 1.2em; color: #444; font-size: 0.97rem; line-height:1.6; padding-left:0;">
+            <li>Authenticity &amp; trust in every listing</li>
+            <li>Empowering youth with the right tools</li>
+            <li>Zero spam, zero fake jobs</li>
+            <li>Continuous innovation for your growth</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-works">
+      <div class="how-works-title">How InternSeek Works</div>
+      <ul class="how-works-list">
+        <li class="how-works-step">🔍 Browse 150+ verified internships</li>
+        <li class="how-works-step">⭐ Bookmark &amp; compare your favorites</li>
+        <li class="how-works-step">📝 Build a standout resume in minutes</li>
+        <li class="how-works-step">🚀 Apply directly &amp; track your progress</li>
+      </ul>
+    </section>
+
+    <section class="features" aria-label="Platform features">
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🚀</div>
+        <div class="feature-title">Latest Internships</div>
+        <div class="feature-desc">Explore 150+ verified internships across tech, business, design &amp; more — updated weekly.</div>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">📝</div>
+        <div class="feature-title">Resume Builder</div>
+        <div class="feature-desc">Create standout resumes quickly with our smart builder. Download instantly as PDF.</div>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">💼</div>
+        <div class="feature-title">Top Companies</div>
+        <div class="feature-desc">Get access to internships from Google, Microsoft, Amazon, and 50+ leading employers.</div>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🔍</div>
+        <div class="feature-title">Smart Search</div>
+        <div class="feature-desc">Filter by location, stipend, duration, domain, and apply directly with one click.</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Platform statistics">
+      <div class="stat-card" tabindex="0">
+        <div class="stat-number" id="internshipCount">0</div>
+        <div class="stat-label">Internships Posted</div>
+      </div>
+      <div class="stat-card" tabindex="0">
+        <div class="stat-number" id="resumeCount">0</div>
+        <div class="stat-label">Resumes Created</div>
+      </div>
+      <div class="stat-card" tabindex="0">
+        <div class="stat-number" id="userCount">0</div>
+        <div class="stat-label">Happy Users</div>
+      </div>
+      <div class="stat-card" tabindex="0">
+        <div class="stat-number" id="companyCount">0</div>
+        <div class="stat-label">Partner Companies</div>
+      </div>
+    </section>
+
+    <a href="/resume-builder" class="cta-btn" role="button" aria-label="Build your resume now">Build Your Resume Now</a>
+
+    <footer class="footer">
+      Made with ❤️ by the InternSeek team.<br />
+      For support or feedback: <a href="mailto:hello@internseek.com">hello@internseek.com</a>
+    </footer>
+  </main>
+
+  <script>
+    // Animate numbers counting up
+    function animateCount(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.textContent = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      animateCount('internshipCount',0,1200, 1400);
+      animateCount('resumeCount', 0,1500,1600);
+      animateCount('userCount', 0, 789, 1800);
+      animateCount('companyCount', 0, 100, 1200);
+    });
+    
+    hi
+  </script>
+</body>
+</html>
