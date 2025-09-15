@@ -1,0 +1,42 @@
+[
+  {
+    "job_title": "Assistant Manager (Civil)",
+    "company_logo": "url_to_company_logo",
+    "mode": "Online",
+    "updated": "2025-01-02",
+    "registration_fee": "INR 750",
+    "registered_candidates": "Data not provided",
+    "registration_deadline": "2025-01-27",
+    "salary": "Rs. 40,000 – 1,40,000 (IDA)"
+  },
+  {
+    "job_title": "Management Trainee (HR)",
+    "company_logo": "url_to_company_logo",
+    "mode": "Online",
+    "updated": "2025-01-02",
+    "registration_fee": "INR 750",
+    "registered_candidates": "Data not provided",
+    "registration_deadline": "2025-01-27",
+    "salary": "Rs. 30,000 – 1,20,000 (IDA)"
+  },
+  {
+    "job_title": "Executive",
+    "company_logo": "url_to_company_logo",
+    "mode": "Online",
+    "updated": "2025-03-01",
+    "registration_fee": "SC/ST/PWD: INR 150; Others: INR 750",
+    "registered_candidates": "Data not provided",
+    "registration_deadline": "2025-03-21",
+    "salary": "Salary details as per advertisement"
+  },
+  {
+    "job_title": "Probationary Officer",
+    "company_logo": "url_to_SBI_logo",
+    "mode": "Online",
+    "updated": "2025-keep checking online",
+    "registration_fee": "SC/ST/PWD: Rs.100; General/OBC: Rs.600",
+    "registered_candidates": "Data not provided",
+    "registration_deadline": "Check SBI official website",
+    "salary": "As per SBI pay scales"
+  }
+]

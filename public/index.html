@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internseek - Home</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 300px;
+        background: rgba(39, 39, 214, 0.925);
+      }
+
+      .hdesign {
+        margin-left: 70px;
+        color: white;
+        padding-top: 15px;
+        font-size: 20px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      }
+
+      .sidebar-compoenent li {
+        list-style: none;
+        padding: 10px;
+        margin-left: 30px;
+        font-size: 18px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        width: 250px;
+      }
+
+      /* Sidebar links style */
+      .sidebar-compoenent li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px 15px;
+        transition: color 0.3s ease, background-color 0.3s ease;
+      }
+
+      .sidebar-compoenent li a:hover {
+        color: blue;
+
+        background-color:white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      /* For li elements without <a>, basic hover */
+      .sidebar-compoenent li:not(:has(a)):hover {
+        background: white;
+        color: rgba(39, 39, 214, 0.925);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .header {
+        height: 50px;
+        width: 100vw;
+        background: rgba(39, 39, 214, 0.925);
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .header h3 {
+        color: white;
+        font-size: 24px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        margin-top: 10px;
+        margin-left: 30px;
+      }
+
+      .header-info {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 0px;
+        font-size: 9px;
+      }
+
+      .details {
+        color: blue;
+        font-size: 40px;
+        margin-top: 100px;
+        margin-left: 600px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      }
+
+      .details p {
+        color: black;
+      }
+
+      .details button {
+        background: white;
+        padding: 12px;
+        border-radius: 20px;
+        color: blue;
+        border-color: black;
+        font-weight: bold;
+      }
+
+      .details button:hover {
+        color: white;
+        background-color: blue;
+        cursor: pointer;
+      }
+
+      .finddetaisl {
+        display: none;
+      }
+
+      .hr {
+        display: flex;
+        margin-top: 40px;
+      }
+
+      .hr h3 {
+        margin-left: 350px;
+        font-size: 20px;
+        font-weight: 30px;
+        color: blue;
+        height: 400px;
+        background: white;
+        border-color: rgb(9, 9, 227);
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        gap: -100px;
+      }
+
+      .cards {
+        display: flex;
+        gap: -500px;
+      }
+
+      .cards2 {
+        border-color: rgb(9, 9, 227);
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        margin-left: 350px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(24, 17, 222);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .card2 img {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(7, 7, 13);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .cards2 button:hover {
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .header {
+          display: none;
+        }
+      }
+
+      @keyframes slide-in {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h3 class="hdesign">INTERNSEEK</h3>
+      <hr style="margin-top: 10px" />
+      <ul class="sidebar-compoenent">
+        <br />
+        <input
+          style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px"
+          type="text"
+        />
+        <br />
+        <li><a class="link" href="index.html">Home</a></li>
+        <li><a href="internship.html">Internship</a></li>
+        <li><a href="hackthon.html">Hackathon</a></li>
+        <li><a href="job.html">Job</a></li>
+        <li><a class="link" href="index.html">settings</a></li>
+        <li><a href="internship.html">Profiles</a></li>
+
+      </ul>
+    </div>
+
+    <div class="header">
+      <h3>INTERNSEEK</h3>
+      <input
+        style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px"
+        type="text"
+      />
+
+      <div class="header-info">
+        <h3>Hackthon</h3>
+        <h3>Internship</h3>
+        <h3>Job</h3>
+      </div>
+    </div>
+
+    <div class="details">
+      <h1 class="heda">Get your dream JOB</h1>
+      <p>By Internseek</p>
+      <button>Find Internship</button>
+      <button>Post Internship</button>
+    </div>
+    <div class="finddetaisl">
+      <h6>By clicking this button you can find internship</h6>
+      <p>By clicking this button you can find internship</p>
+    </div>
+
+    <div style="display: flex; margin-left: 750px; margin-top: 130px">
+      <h2 style="color: blue">Internships&nbsp;</h2>
+      <h2 style="">Category</h2>
+    </div>
+
+    <div class="hr">
+      <h3
+        style="
+          height: 100px;
+          width: 200px;
+          border-style: solid;
+          border-width: 2px;
+          border-color: rgb(24, 17, 222);
+          border-radius: 10px;
+          padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-right: -250px;
+        "
+      >
+        SystemDesgn
+      </h3>
+      <h3
+        style="
+          height: 100px;
+          width: 200px;
+          border-style: solid;
+          border-width: 2px;
+          border-color: rgb(24, 17, 222);
+          border-radius: 10px;
+          padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-right: -250px;
+        "
+      >
+        Marketing
+      </h3>
+      <h3
+        style="
+          height: 100px;
+          width: 200px;
+          border-style: solid;
+          border-width: 2px;
+          border-color: rgb(24, 17, 222);
+          border-radius: 10px;
+          padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-right: -250px;
+        "
+      >
+        webdevloper
+      </h3>
+      <h3
+        style="
+          height: 100px;
+          width: 200px;
+          border-style: solid;
+          border-width: 2px;
+          border-color: rgb(24, 17, 222);
+          border-radius: 10px;
+          padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-right: -250px;
+        "
+      >
+        Finance
+      </h3>
+    </div>
+
+    <div style="display: flex; margin-left: 750px; margin-top: 130px">
+      <h2 style="color: blue">Recommended&nbsp;</h2>
+      <h2 style="">Internships</h2>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="cards">
+      <div class="cards2">
+        <img
+          width="180px"
+          height="180px"
+          style="
+            border-style: solid;
+            border-width: 3px;
+            border-color: rgb(7, 7, 13);
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 2px;
+          "
+          src="https://img.freepik.com/free-vector/internship-job-concept_23-2148737067.jpg"
+        />
+        <h3 style="color: blue;">Full Stack Devloper Intership</h3>
+        <br />
+        <p>1562 Applied&nbsp;&nbsp;&nbsp;&nbsp;20K Stipend</p>
+        <br />
+        <button
+          style="
+            color: blue;
+            padding: 8px;
+            background-color: white;
+            border-radius: 7px;
+            border-color: blue;
+          "
+        >
+          Apply Now
+        </button>
+      </div>
+
+      <div class="cards2">
+        <img
+          width="180px"
+          height="180px"
+          style="
+            border-style: solid;
+            border-width: 3px;
+            border-color: rgb(7, 7, 13);
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 2px;
+          "
+          src="https://img.freepik.com/free-vector/internship-job-concept_23-2148737067.jpg"
+        />
+        <h3 style="color: blue;">Full Stack Devloper Intership</h3>
+        <br />
+        <p>1562 Applied&nbsp;&nbsp;&nbsp;&nbsp;20K Stipend</p>
+        <br />
+        <button
+          style="
+            color: blue;
+            padding: 8px;
+            background-color: white;
+            border-radius: 7px;
+            border-color: blue;
+          "
+        >
+          Apply Now
+        </button>
+      </div>
+
+      <div class="cards2">
+        <img
+          width="180px"
+          height="180px"
+          style="
+            border-style: solid;
+            border-width: 3px;
+            border-color: rgb(7, 7, 13);
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 2px;
+          "
+          src="https://img.freepik.com/free-vector/internship-job-concept_23-2148737067.jpg"
+        />
+        <h3 style="color: blue;">Full Stack Devloper Intership</h3>
+        <br />
+        <p>1562 Applied&nbsp;&nbsp;&nbsp;&nbsp;20K Stipend</p>
+        <br />
+        <button
+          style="
+            color: blue;
+            padding: 8px;
+            background-color: white;
+            border-radius: 7px;
+            border-color: blue;
+          "
+        >
+          Apply Now
+        </button>
+      </div>
+    </div>
+
+    <div style="display: flex; margin-left: 600px; margin-top: 130px">
+      <h2 style="color: blue ; font-size: 35px;">Top Companies Listing on &nbsp;</h2>
+      <h2 style="font-size: 35px;">Unstop</h2>
+    </div>
+    <p style="margin-left: 730px; margin-top: 3px">
+      Find jobs that fit your career aspirations.
+    </p>
+    <br />
+    <br />
+
+    <div
+      style="
+        display: flex;
+        gap: 60px;
+        margin-left: 350px;
+        margin-top: 30px;
+      "
+    >
+      <img
+        width="100%"
+        height="100%"
+        style="animation: slide-in 3s ease-in 1s infinite reverse both running;"
+        src="https://d8it4huxumps7.cloudfront.net/images/partners/partners125/5c77acc691750_samsung-logo-4__1_.png?d=120x120"
+      />
+      <img
+        width="100%"
+        height="100%"
+        style="animation: slide-in 3s ease-in 1s infinite reverse both running;"
+        src="https://d8it4huxumps7.cloudfront.net/uploads/images/682eba182b6f3_flipkart.png?d=195x70"
+      />
+      <img
+        width="100%"
+        height="100%"
+        style="animation: slide-in 3s ease-in 1s infinite reverse both running;"
+        src="https://d8it4huxumps7.cloudfront.net/uploads/images/62e4bdf0c2312_snapdeal.png?d=195x70"
+      />
+      <img
+        width="100%"
+        height="100%"
+        style="animation: slide-in 3s ease-in 1s infinite reverse both running;"
+        src="https://d8it4huxumps7.cloudfront.net/uploads/images/62e4b91214c09_myntra.png?d=150x100"
+      />
+    </div>
+
+    <div
+      style="
+        width: 100%;
+        height: 60px;
+        background-color: blue;
+        margin-left: 300px;
+        margin-top: 50px;
+        display: flex;
+      "
+    >
+      <h1 style="color: white; margin-left: 20px">Internseek</h1>
+      <input
+        type="text"
+        style="border-radius: 20px; height: 30px; width: 400px; margin-top: 10px; margin-left: 10px"
+        placeholder="&nbsp;&nbsp;Enter your email to get job updateds"
+      />
+
+      <img
+        src="https://icon2.cleanpng.com/20240216/yhs/transparent-google-logo-google-logo-with-colorful-letters-on-black-1710875297222.webp"
+        style="border-radius: 50%; transform: scale(0.6); margin-left: 380px"
+      />
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/012/660/862/non_2x/linkedin-logo-on-transparent-isolated-background-free-vector.jpg"
+        style="border-radius: 50%; transform: scale(0.6)"
+      />
+      <img
+        src="https://images.seeklogo.com/logo-png/49/1/twitter-x-logo-png_seeklogo-492396.png"
+        style="border-radius: 50%; transform: scale(0.6)"
+      />
+      <img
+        src="https://img.freepik.com/premium-psd/instagram-application-logo_23-2151544088.jpg?semt=ais_hybrid&w=740&q=80"
+        style="border-radius: 50%; transform: scale(0.6)"
+      />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const text = document.getElementsByClassName("heda")[0];
+        const arr = ["hackthons", "Internship", "Job"];
+        let i = 0;
+
+        setInterval(() => {
+          text.textContent = "Get your dream " + arr[i];
+          i = (i + 1) % arr.length;
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internseek - Resume Builder</title>
+
+    <style>
+              * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 300px;
+        background: rgba(39, 39, 214, 0.925);
+      }
+
+      .hdesign {
+        margin-left: 70px;
+        color: white;
+        padding-top: 15px;
+        font-size: 20px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      .sidebar-compoenent li {
+        color: rgba(250, 244, 244, 0.893);
+        list-style: none;
+        padding: 10px;
+        margin-left: 30px;
+        font-size: 18px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        width: 250px;
+      }
+
+      .sidebar li:hover {
+        background: white;
+        color: rgba(39, 39, 214, 0.925);
+        border-radius: 10px;
+      }
+
+      .header {
+        height: 50px;
+        width: 100vw;
+        background: rgba(39, 39, 214, 0.925);
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .header h3 {
+        color: white;
+        font-size: 24px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        margin-top: 10px;
+        margin-left: 30px;
+      }
+
+      .header-info {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 0px;
+        font-size: 9px;
+      }
+
+
+            @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .header {
+          display: none;
+        }
+      }
+
+
+    </style>
+  </head>
+  
+  <body>
+        <div class="sidebar">
+      <h3 class="hdesign">INTERNSEEK</h3>
+      <hr style="margin-top: 10px" />
+      <ul class="sidebar-compoenent">
+        <br />
+        <input style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px;"type="text">
+        <br/>
+        <li>Home</li>
+        <li>Resume Builder</li>
+        <li>Internship</li>
+        <li>Hackathon</li>
+        <li>Job</li>
+
+        <li style="margin-bottom: 0px">Setting</li>
+        <li style="margin-bottom: 0px">Profile</li>
+      </ul>
+    </div>
+
+    <div class="header">
+      <h3>INTERNSEEK</h3>
+        <input style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px;"type="text">
+
+      <div class="header-info">
+        <h3>Hackthon</h3>
+        <h3>Internship</h3>
+        <h3>Job</h3>
+      </div>
+    </div>
+
+
+    <div style="display: flex;">
+    <div style="width: 35%; height: 95vh; border-style: solid;
+          border-width: 2px;
+          border-color: rgb(24, 17, 222);
+          border-radius: 10px;margin-left: 320px; margin-top: 20px;">
+
+
+<form style="padding: 15px;">
+    <h2 style="margin-left: 150px;">Enter your deatils</h2>
+    <br/>
+<label style="color: blue; ">Name</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+
+
+
+<br/>
+<label style="color: blue; ">Social links(comma seprated)</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/><br/>
+<label style="color: blue; ">Skills summary</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+
+<br/>
+<label style="color: blue; ">EDUCATION</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+<br/>
+<label style="color: blue; ">PROJECT WORK
+</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+<br/>
+<label style="color: blue; ">CERTIFICATE</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+
+
+    <br/>
+<label style="color: blue; ">Hackathons & Open Source Contributions
+</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+
+    <br/>
+<label style="color: blue; ">Campus & Community Involvement
+me</label>
+<br/>
+<input style="width: 400px; height: 30px; border-radius: 10px; margin-top: 8px;" type="text">
+<br/>
+    </div>
+    </form>
+
+        <div style="width: 40%; height: 95vh; border-style: solid;
+          border-width: 2px;
+          border-color: rgb(4, 3, 4);
+          border-radius: 10px;margin-left: 30px; margin-top: 20px;">
+
+
+      <h2 style="margin-left: 240px; margin-top: 20px;">Shivam Kumar</h2>
+
+        <p style="font-size: 13px; margin-top: 3px; margin-left: 5px;">github.com/shivamshrma09&nbsp;&nbsp;
+linkedin.com/in/shivam-kumar&nbsp;&nbsp;
+shivamsharma27107@gmail.com&nbsp;&nbsp;
++91 8368296406</p>
+<br/>
+<p style="margin-left: 10px; margin-bottom: 7px;">SKILLS SUMMARY</p>
+ <hr style="margin-left: 10px; margin-bottom: 10px;"></hr>
+ <div style="margin-left: 10px;">
+ <p><b>. Languages:</b> Python, C++, C</p>
+<p><b>. Frameworks:</b> React.js, Node.js, Express.js, MongoDB, Tailwind CSS, TensorFlow</p>
+<p><b>. Tools:</b> Git, GitHub, OpenCV, NumPy, Pandas, Matplotlib, Web Speech API (TTS/STT), JWT Auth, MySQL, Kaggle</p>
+<p><b>. Tools & Libraries:</b> Git, GitHub, OpenCV, NumPy, Pandas, Matplotlib, Web Speech API (TTS/STT), JWT Auth</p>
+<p><b>. Platforms:</b> Firebase, Cloudinary, Vercel, Render, AWS Cloud</p>
+ </div>
+
+ <br/>
+ <p style="margin-left: 10px; margin-bottom: 7px;">EDUCATION</p>
+  <hr style="margin-top: 10px;"></hr>
+
+  <b  >● Delhi Technological University (DTU),</b>  <p>Delhi Aug 2024 – Expected May 2028</p> 
+
+
+
+    </div>
+    </div>
+  </body>
+</html>

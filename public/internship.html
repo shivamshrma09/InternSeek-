@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internseek - Job hunter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+
+    .hdesign {
+      margin-left: 70px;
+      color: white;
+      padding-top: 15px;
+      font-size: 20px;
+      font-family: "Gill Sans", Calibri, sans-serif;
+    }
+
+    .header {
+      height: 50px;
+      width: 100vw;
+      background: rgba(39, 39, 214, 0.925);
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .header h3 {
+      color: white;
+      font-size: 24px;
+      font-family: "Gill Sans", Calibri, sans-serif;
+      margin-top: 10px;
+      margin-left: 30px;
+    }
+
+    .header-info {
+      display: flex;
+      justify-content: space-around;
+      width: 40%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 9px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .header {
+        display: none;
+      }
+    }
+
+    /* Card Styling */
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 80vw;
+      margin-left: 300px;
+    }
+
+    .card {
+      width: 320px;
+      margin: 50px auto;
+      border: 2px solid rgb(24, 17, 222);
+      border-radius: 10px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .card-header h3 {
+      font-size: 22px;
+      color: blue;
+      margin: 0;
+    }
+
+    .card-body {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+
+
+
+
+          .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 300px;
+        background: rgba(39, 39, 214, 0.925);
+      }
+
+      .hdesign {
+        margin-left: 70px;
+        color: white;
+        padding-top: 15px;
+        font-size: 20px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      }
+
+      .sidebar-compoenent li {
+        list-style: none;
+        padding: 10px;
+        margin-left: 30px;
+        font-size: 18px;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        width: 250px;
+      }
+
+      /* Sidebar links style */
+      .sidebar-compoenent li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 10px 15px;
+        transition: color 0.3s ease, background-color 0.3s ease;
+      }
+
+      .sidebar-compoenent li a:hover {
+        color: blue;
+
+        background-color:white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      /* For li elements without <a>, basic hover */
+      .sidebar-compoenent li:not(:has(a)):hover {
+        background: white;
+        color: rgba(39, 39, 214, 0.925);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h3 class="hdesign">INTERNSEEK</h3>
+    <hr style="margin-top: 10px" />
+    <ul class="sidebar-compoenent">
+      <br />
+      <input
+        style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px;"
+        type="text"
+      />
+      <br />
+      <br />
+  <li><a class="link" href="index.html" style="text-decoration: none; ">Home</a></li>
+  <li><a href="internship.html" style="text-decoration: none;  ">Internship</a></li>
+  <li><a href="hackthon.html" style="text-decoration: none;  ">Hackathon</a></li>
+  <li><a href="job.html" style="text-decoration: none;  ">Job</a></li>
+
+
+
+
+    </ul>
+  </div>
+
+  <div class="header">
+    <h3>INTERNSEEK</h3>
+    <input
+      style="height: 30px; width: 250px; margin-left: 30px; padding: 13px; border-radius: 7px; padding-bottom: 20px;"
+      type="text"
+    />
+    <div class="header-info">
+      <h3>Hackthon</h3>
+      <h3>Internship</h3>
+      <h3>Job</h3>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="color: blue; margin-left: 500px; font-size: 50px; margin-top: 100px;">
+      Empowering india by JOB
+    </h2>
+    <h3 style="color: black; margin-left: 800px; font-size: 50px;">By Internseek</h3>
+    <br />
+    <hr />
+  </div>
+
+
+
+  <!-- Dynamic Cards -->
+  <div class="cards-container" id="cards-container"></div>
+
+  <script>
+    fetch("internsheep.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const container = document.getElementById("cards-container");
+
+        data.forEach((job) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          card.innerHTML = `
+            <div class="card-header">
+            <img style="width: 80px; height: 80px;" src="${job.company_logo}" alt="${job.company_logo} Logo" />
+
+              <h3>${job.job_title}</h3>
+            </div>
+            <hr style="margin: 15px 0;">
+            <div class="card-body">
+              <p><strong>Mode:</strong> ${job.mode}</p>
+              <p><strong>Updated:</strong> ${job.updated}</p>
+              <p><strong>Fee:</strong> ${job.registration_fee}</p>
+              <p><strong>Eligibility:</strong> ${job.eligibility}</p>
+              <p><strong>Registrations:</strong> ${job.registered_candidates}</p>
+              <p><strong>Registration Deadline:</strong> ${job.registration_deadline}</p>
+              <p><strong>Salary :</strong> ${job.salary}</p>
+              <br/>
+<a href="https://unstop.com/all-opportunities?oppstatus=recent&searchTerm=hackthons" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+  <button style="
+    background-color: #2742d6;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  "
+  onmouseover="this.style.backgroundColor='#1a2a9e'"
+  onmouseout="this.style.backgroundColor='#2742d6'">
+    Apply
+  </button>
+</a>
+
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      })
+      .catch((error) => console.error("Error loading data:", error));
+  </script>
+</body>
+</html>

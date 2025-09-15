@@ -1,0 +1,42 @@
+[
+  {
+    "job_title": "Internship - Ministry of External Affairs",
+    "company_logo": "url_to_mea_logo",
+    "mode": "Online",
+    "updated": "2025-03-12",
+    "registration_fee": "No fee",
+    "registered_candidates": "Data not publicly provided",
+    "registration_deadline": "Varies; check MEA website",
+    "salary": "Honorarium of INR 10,000 per month plus one-time travel cost reimbursement"
+  },
+  {
+    "job_title": "PM Internship Scheme",
+    "company_logo": "url_to_pm_scheme_logo",
+    "mode": "Online",
+    "updated": "2025-09-07",
+    "registration_fee": "No fee",
+    "registered_candidates": "Data not publicly provided",
+    "registration_deadline": "22 April 2025",
+    "salary": "₹5,000 monthly stipend + ₹6,000 one-time grant"
+  },
+  {
+    "job_title": "NITI Aayog Internship",
+    "company_logo": "url_to_niti_aayog_logo",
+    "mode": "Online",
+    "updated": "Ongoing monthly registrations",
+    "registration_fee": "No fee",
+    "registered_candidates": "Data not publicly provided",
+    "registration_deadline": "Open 1-10 every month",
+    "salary": "No stipend generally mentioned"
+  },
+  {
+    "job_title": "DPIIT Internship Scheme",
+    "company_logo": "url_to_dpiit_logo",
+    "mode": "Online",
+    "updated": "2024-12-31",
+    "registration_fee": "No fee",
+    "registered_candidates": "Data not publicly provided",
+    "registration_deadline": "Varies",
+    "salary": "No stipend generally mentioned"
+  }
+]

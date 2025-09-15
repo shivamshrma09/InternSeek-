@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup</title>
+
+  <style>
+    .texttt {
+      margin-left: 10px;
+      color: white;
+    }
+
+    input {
+      width: 250px;
+      margin-left: 10px;
+      height: 25px;
+      border-radius: 10px;
+    }
+
+    input:hover {
+      border-color: blue;
+    }
+
+    button {
+      height: 30px;
+      width: 100px;
+      border-radius: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 300px; height: 400px; background: blue; border-radius: 15px; padding-top: 10px;">
+    <div style="display: flex; align-items: center;">
+      <h3 style="color: white; margin-left: 10px;">Login to your account</h3>
+      <!-- Signup button -->
+      <button id="signupBtn" style="background: white; color: blue; font-weight: bold; font-size: 15px; margin-left: 30px;">
+        Sign Up
+      </button>
+      <!-- Login button -->
+      <button id="loginBtn" style="background: white; color: blue; font-weight: bold; font-size: 15px; margin-left: 10px;">
+        Login
+      </button>
+    </div>
+
+    <p style="color: white; margin-left: 10px; margin-top: 10px;">
+      Enter your email and password below
+    </p>
+
+    <p class="texttt">Email</p>
+    <input type="email" placeholder="Enter your Email" id="emailInput" />
+
+    <p class="texttt">Password</p>
+    <input type="password" placeholder="Enter your Password" id="passwordInput" />
+
+    <div style="display: flex; height: 40px; width: 130px; background: white; border-radius: 20px; margin-left: 70px; margin-top: 30px;">
+      <img width="25" height="25" style="margin-top: 10px; margin-left: 10px;"
+           src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"/>
+      <h3 style="margin-top: 10px; color: blue; margin-left: 20px;">Google</h3>
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const signupBtn = document.getElementById('signupBtn');
+    const loginBtn = document.getElementById('loginBtn');
+
+    signupBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!email || !password) {
+        alert('Please enter both email and password to sign up');
+        return;
+      }
+
+      const response = await fetch('/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const text = await response.text();
+      if (response.ok) {
+        alert('Sign Up: ' + text);
+        window.location.href = '/index.html';
+      } else {
+        alert('Sign Up Error: ' + text);
+      }
+    });
+
+    loginBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!email || !password) {
+        alert('Please enter both email and password to login');
+        return;
+      }
+
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const text = await response.text();
+      if (response.ok) {
+        alert('Login: ' + text);
+        window.location.href = '/index.html';
+      } else {
+        alert('Login Error: ' + text);
+      }
+    });
+  </script>
+</body>
+</html>
